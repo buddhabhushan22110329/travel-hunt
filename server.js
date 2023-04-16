@@ -46,7 +46,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://127.0.0.1:27017/tourismDB");
+// mongoose.connect("mongodb://127.0.0.1:27017/mcdb");
+// mongodb+srv://sirsatbuddhabhushan95:<password>@cluster0.ze0jsoo.mongodb.net/?retryWrites=true&w=majority
+// mongoose.connect("mongodb+srv://sirsatbuddhabhushan95:Bhushan@183@cluster0.ze0jsoo.mongodb.net/tempDB");
+
+// mongo "mongodb+srv://cluster0.ze0jsoo.mongodb.net/myFirstDatabase" --username sirsatbuddhabhushan95
+
+
+mongoose.connect("mongodb+srv://sirsatbuddhabhushan95:123@cluster0.ze0jsoo.mongodb.net/tourismDB", {useNewUrlParser:true});
 
 
 const userSchema = mongoose.Schema({
@@ -71,6 +78,8 @@ userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("user", userSchema);
+
+
 
 //cookie setup STEP-4
 passport.use(User.createStrategy());
