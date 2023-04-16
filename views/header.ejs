@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.0/dist/js/bootstrap.bundle.min.js
+  "></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+    <!-- <link rel="stylesheet" href="../assets/css/style2.css"> -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!-- css file for animation  -->
+    <link rel="stylesheet" href="assets\vendor\animate\animate.css">
+    <link rel="stylesheet" href="assets\vendor\owl-carousel\css\owl.carousel.css">
+
+
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <header >
+        <nav class="navbar navbar-expand-lg" style="background-color: #242c24;">
+            <a class="navbar-brand" href="#">TempName</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav" pr-0>
+                <ul class="navbar-nav ml-auto mr-lg-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/packages">Packages</a>
+                    </li>
+               
+                    <% if(bookStatus){ %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/myBookings">My Bookings</a>
+                        </li>
+                    <% } %>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                    <li class="nav-item mr-lg-5">
+                        <a class="nav-link" href="/contact">Contact Us</a>
+                    </li>
+
+                    <%if((adminLogged==false && userLogged==false) || username==null){ %>
+                        <li class="nav-item">
+                            <a class="btn mybtn pr-lg-0" href="/login">Login &nbsp;|</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn mybtn pl-lg-0 ml-lg-2" href="/register">Sign Up</a>
+                        </li>
+                    <%}else{ %>
+                        <li class="nav-item">
+                            <a class="btn mybtn pr-lg-0" href="#"><%=username%>&nbsp;|</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn mybtn pl-lg-0 ml-lg-2" href="/logout">Sign Out</a>
+                        </li>
+                    <%} %>
+
+                </ul>
+            </div>
+        </nav>
+    </header>

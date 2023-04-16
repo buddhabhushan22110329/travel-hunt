@@ -1,0 +1,148 @@
+<%- include('header.ejs') %>
+
+  <section style="background-color: rgb(235, 234, 234); padding-top: 5%; padding-bottom: 5%;">
+    <div class="container">
+      <div class="row">
+
+        <div class="img-slide col-lg-8 wow fadeInLeft">
+
+          <div id="carouselExampleInterval" class="carousel slide box-class" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="3000">
+                <img src="assets/img/1.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/img/2.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/img/3.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/img/4.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item" data-bs-interval="3000">
+                <img src="assets/img/5.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+
+
+            <button class="carousel-control-prev caro-btn" type="button" data-bs-target="#carouselExampleInterval"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden"></span>
+            </button>
+
+            <button class="carousel-control-next caro-btn" type="button" data-bs-target="#carouselExampleInterval"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden"></span>
+            </button>
+          </div>
+
+        </div>
+
+        <div class="col-lg-4 pl-3 box-class wow fadeInRight">
+          <div class="data">
+
+            <div class="card-heade">
+              <h2 style="font-weight: bold;"> <%= destination %> </h2>
+              <span class="txt-class">5 Nights - 6 Days</span>
+            </div>
+
+            <hr style="border: 1px solid rgb(165, 165, 165);">
+            <h5 class="myAlign">Featured</h5>
+            <div class="row myAlign pt-3">
+              <div class="col-lg-4">
+                <i class="fa-solid fa-hotel fa-2x"></i>
+                <p><span class="txt-class">3 Star Hotel</span></p>
+              </div>
+              <div class="col-lg-4">
+                <i class="fa-solid fa-mug-hot fa-2x"></i>
+                <p><span class="txt-class">Meals</span></p>
+              </div>
+              <div class="col-lg-4">
+                <i class="fa-sharp fa-solid fa-car-side fa-2x"></i>
+                <p><span class="txt-class">Transport</span></p>
+              </div>
+              <div class="col-lg-4">
+                <i class="fa-sharp fa-solid fa-place-of-worship fa-2x"></i>
+                <p><span class="txt-class">Sightseeing</span></p>
+              </div>
+
+            </div>
+
+            <form action="/book" method="post">
+              <div class="myAlign pt-5">
+                <button type="submit" class="btn lgbtn">Book Now</button>
+                <!-- <a href="#" class="btn lgbtn">Book Now</a> -->
+              </div>
+            </form>
+
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+    <!-- Mid Section -->
+
+    <div class="container" style="margin-top: 8%;">
+
+      <div class="row">
+
+        <div class="overview col-lg-8 wow fadeInLeft">
+          <h2 style="font-weight: bold;">Overview</h2>
+          <div class="data">
+            <p><%= destination %>, also known as the "Paradise on Earth," is a beautiful destination in northern India. A 5 Night
+              and
+              6 Day Tour Package of <%= destination %> offers a great opportunity to explore the mesmerizing natural beauty, rich
+              culture, and heritage of this beautiful place.The tour package includes a visit to the beautiful city of
+              Srinagar. The package also includes a stay on a luxurious houseboat on the famous Dal Lake, which is
+              surrounded by picturesque mountains and offers a unique
+              experience of living on water.</p>
+            <p>Other major attractions included in the tour package are the famous Pahalgam valley, Gulmarg, and
+              Sonmarg,
+              which offer breathtaking views of snow-capped mountains.The package also includes a stay on a luxurious
+              houseboat on the famous Dal Lake, which is surrounded by picturesque mountains and offers a unique
+              experience of living on water.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 wow fadeInRight">
+          <div class="card">
+            <div class="card-header" style="padding-top: 20px;">
+              <h4 style="font-weight: bold;">Pricing</h4>
+            </div>
+            <div class="card-body">
+              <div class="row myCenter">
+                <div class="col-lg-6">
+                  <p>Tour Length</p>
+                  <span>5D/6N</span>
+                </div>
+                <div class="col-lg-6">
+                  <h5>₹ 38,990</h5>
+                  <p style="color: #0E8388;">Available seats:8</p>
+                </div>
+              </div>
+              <div class="txt-class">
+                <p>The above Discounted Tour Price is as of now, will change as the seats fill. The Discounted price is
+                  inclusive of extra taxes.</p>
+                <p><strong>Terms and Conditions apply</strong></p>
+              </div>
+
+
+              <div class="myAlign pt-5">
+                <a href="#" class="btn lgbtn">Enquire Now</a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <%- include('footer.ejs') %>

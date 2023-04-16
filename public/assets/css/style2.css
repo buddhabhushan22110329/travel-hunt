@@ -1,0 +1,102 @@
+/* Top Section */
+
+.top {
+    margin: 0;
+    padding: 5% 10% 1%;
+}
+
+img {
+    height: 450px;
+    width: 100%;
+}
+
+.img-slide {
+    padding: 0;
+}
+
+.top-title {
+    background-color: lightgrey;
+    padding-left: 0;
+}
+
+.top-description {
+    padding: 7%;
+}
+
+hr {
+    margin: 4%;
+    color: lightgrey;
+}
+
+span {
+    font-size: small;
+    font-weight: 600;
+}
+
+.features {
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Mid Section */
+
+.mid {
+    margin: 0;
+    padding: 2% 11% 5%;
+}
+
+.mid-1 {
+    padding-bottom: 3%;
+}
+
+.overview {
+    border: 1px solid lightgray;
+    width: 72%;
+    padding: 3%;
+    margin-right: 3%;
+}
+
+.price {
+    width: 25%;
+    text-align: center;
+}
+
+.price-img {
+    display: block;
+    height: 15%;
+    width: auto;
+    margin: auto;
+}
+
+
+.plan {
+    border: 1px solid lightgray;
+    width: 72%;
+    padding: 3%;
+    margin-right: 3%;
+}
+
+p {
+    font-size: 0.9rem;
+}
+
+li {
+    font-size: 0.9rem;
+}
+
+h4 {
+    padding-bottom: 2%;
+}
+
+h6 {
+    font-size: large;
+    margin-bottom: 3%;
+}
+
+.day {
+    font-weight: bold;
+    color: #2F576E;
+    text-align: center;
+}    
+

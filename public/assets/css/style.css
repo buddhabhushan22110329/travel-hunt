@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand, .nav-item, .nav-link{
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-link{
+  /* transition: all .3s ease-out; */
+
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.myCenter{
+    display: flex;
+    justify-content: center;
+}
+.myAlign{
+    align-items: center;
+    text-align: center;
+}
+
+.mybtn{
+    color: #fff;
+}
+
+ /* NO NEED OF THIS */
+@media screen and (max-width: 988px) {  /*jab width <= 988px hojayegi tab login wala btn adjust krenge*/
+    /* .loginClass{
+        margin-bottom: 3%;
+    } */
+    .marginHead{
+        margin-top: 13%;
+    }
+}
+
+.data{
+    margin-top: 5%; 
+    /* line-height: 60%; */
+} 
+
+
+.headPara{
+    margin-top: 6%;
+}
+
+.paratxt{
+    font-size: 20px; 
+    font-weight: bold;
+}
+
+
+#headID{
+    background-image: url('../img/bg-img3.jpg');
+    background-repeat: no-repeat;
+    position: sticky;
+    /* height: fit-content; */
+    height: 93vh;
+}
+
+.head-data{
+  font-family: 'Lilita One', cursive;
+  text-transform: uppercase;
+  font-weight:bolder;
+}
+
+.titleClass{
+  text-transform: uppercase;
+  font-weight:100;
+}
+
+/* package section */
+
+.pack{
+  /* border-radius: 10px solid red; */
+  /* background-color: red; */
+  border: 2px solid rgb(159, 157, 157);
+  box-shadow: 5px 5px 5px 5px rgb(120, 119, 119);
+  border-radius: 30px;
+}
+
+.img-class img{
+  margin-top: 7%;
+  box-shadow: 2px 2px 2px 2px rgb(120, 119, 119);
+}
+
+.img-class img:hover{
+  box-shadow: 5px 5px 5px 5px rgb(159, 157, 157);
+}
+
+.img-class{
+  /* border: 2px solid red; */
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.widthadj, .widthadj2{
+  transition: transform .3s;
+  margin-top: 5%;
+}
+.widthadj:hover {
+  transform: scale(1.1); /* (110% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.widthadj2:hover {
+  transform: scale(1.3); /* (110% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+
+.img-class .btn{
+  font-size: medium;
+  margin-top: 8%;
+  background-color: rgb(255, 217, 0);
+  /* border-radius: 20px solid red; */
+}
+
+.img-class .btn:hover{
+  background-color: rgb(90, 91, 89);
+  color: #fff;
+  /* border-radius: 5px rgb(123, 226, 255); */
+}
+
+.img-class p{
+  font-weight: bold;
+  padding-top: 5%;
+  font-size: large;
+}
+
+/* services section */
+#servicesID{
+  margin-top: 8%;
+}
+#packageID{
+  margin-top: 3%;
+}
+
+.img-class i{
+  margin-top: 5%;
+}
+
+/* footer section */
+
+.page-footer {
+    position: relative;
+    display: block;
+    padding-top: 80px;
+    padding-bottom: 16px;
+    background-color: #1c231c;
+    /* background-color: #002b70; */
+    color: #fff;
+  }
+  
+  .page-footer h5 {
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+  
+  .page-footer hr {
+    border-color: #4F5E5B;
+  }
+  
+  .footer-menu {
+    position: relative;
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .footer-menu a,
+  .footer-link {
+    display: inline-block;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: rgba(152, 151, 151, 0.833);
+    /* color: rgba(255, 255, 255, 0.6); */
+    transition: all .2s ease;
+  }
+  
+  .footer-menu a:hover,
+  .footer-link:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .footer-link {
+    padding: 0;
+    margin-bottom: 16px;
+  }
+  
+  .footer-sosmed a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 42px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 18px;
+    background-color: #26312F;
+    color: #ffff;
+    transition: all .2s ease;
+  }
+  
+  .footer-sosmed a:hover {
+    background-color: #1F4685;
+    text-decoration: none;
+  }
+
+
+/* contact section */
+.submitBtn:hover, .lgbtn:hover{
+  background-color: rgb(90, 91, 89);
+  color: white;
+  border: none;
+}
+.submitBtn, .lgbtn{
+  background-color: rgb(255, 217, 0);
+  border: none;
+  color: black;
+}
+
+.lgbtn{
+  width: 100%;
+}
+
+/* login section */
+.memberClass{
+  font-size: 14px;
+  color: rgb(78, 78, 78);
+}
+
+.memberClass li{
+  list-style: none;
+  width: 10%;
+}
+
+.form-control::placeholder{
+  color: rgb(156, 156, 156);
+}
+
+.card{
+  border: 1px solid rgb(159, 157, 157);
+  box-shadow: 1px 2px 2px 2px rgb(156, 156, 156);
+}
+
+/* carousal img */
+.caro-img img{
+  height: 450px;
+  width: 700px;
+}
+
+.caro-btn{
+  height: 30px;
+  margin-top: 28%;
+  overflow: hidden;
+  background-color: transparent;
+  border: none;
+}
+
+.box-class{
+  border: 1px solid rgb(114, 114, 114);
+  background-color: #f5f5f5;
+  box-shadow: 1px 1px 1px 1px rgb(120, 119, 119);
+}
+
+.txt-class{
+  color: rgb(87, 87, 87); 
+}
+
+.myAlign .col-lg-4 .txt-class, .card-body .txt-class{
+  font-size: 14px;
+  /* color: red; */
+}
+
+@media screen and (max-width: 378px) {  /*jab width <= 378px hojayegi tab table ko adjust krenge*/
+
+  table tbody{
+    font-size: 13px;
+  }
+
+}

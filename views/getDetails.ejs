@@ -1,0 +1,77 @@
+<%- include('header') %>
+
+<div class="middle myAlign pt-5 wow zoomIn">
+  <h1>Enquiry for DELIGHTS OF <span style="color: rgb(255, 217, 0); text-transform: uppercase;"> <%= destination %> </span> </h1>
+</div>
+
+<section class="myCenter pb-5 mb-5">
+  
+<div class="container mt-5">
+
+
+  <div class="row myCenter">
+    <div class="col-lg-8 col-sm-6" >
+      <div class="card wow zoomIn" style="background-color: rgb(249, 249, 249);">
+        <div class="card-body">
+
+        
+          <form action="/getDetails" method="POST" class="my">
+
+            <div class="row ">
+                <div class="col-lg-6">
+
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input required type="name" class="form-control" name="name" placeholder="e.g bhushan">
+                    </div>
+    
+                </div>
+    
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="text">Mobile No.</label>
+                        <input required type="text" class="form-control" name="number" placeholder="(+91) ">
+                      </div>
+                </div>
+
+                <div class="col-lg-6 mt-3">
+                    <div class="form-group">
+                        <label for="number">No. of adults</label>
+                        <input required type="number" class="form-control" name="adults">
+                      </div>
+                </div>
+                <div class="col-lg-6 mt-3">
+                    <div class="form-group">
+                        <label for="date">Date of travel</label>
+                        <input required type="date" class="form-control" name="date">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label for="text">Details</label>
+                        <input type="text" class="form-control" name="de" placeholder="Give us more details to assist you better" style="height: 120px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="myCenter mt-5">
+                <div class="row col-lg-3">
+                    <button type="submit" class="btn btn-dark lgbtn">Book</button>
+                </div>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<%- include('footer') %>

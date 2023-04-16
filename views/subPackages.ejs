@@ -1,0 +1,52 @@
+<%- include ('header.ejs') %>
+
+<section id="packageID" style="padding-bottom: 10%;">
+    <div class="package-class myCenter">
+        <div class="container">
+
+            <div class="data myAlign wow zoomIn">
+                <h1 class="titleClass"><span style="color: rgb(255, 217, 0);"><%= category %></span> Packages</h1>
+                <p style="font-size: large;">choose packages according to your budget</p>
+            </div>
+
+            <div class="row pack wow fadeInUp mt-5">
+
+                <div class="col-lg-4 myCenter">
+                    <div class="img-class myAlign ">
+
+                        <a href="/<%= place1 %>Details">
+                            <img class="widthadj" src="assets/img/<%= imgName %>.jpg" width="300px" height="190px">
+                        </a>
+                        <a class="btn" href="/<%= place1 %>Details"><%= place1 %></a>
+
+                    </div>
+                </div>  
+
+                <div class="col-lg-4 myCenter">
+                    <div class="img-class myAlign">
+
+                        <a href="/<%= place2 %>Details">
+                            <img class="widthadj" src="assets/img/<%= imgName %>.jpg" width="300px" height="190px">
+                        </a>
+                        <a class="btn" href="/<%= place2 %>Details"><%= place2 %></a>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4 myCenter">
+                    <div class="img-class myAlign">
+
+                        <a href="/<%= place3 %>Details">
+                            <img class="widthadj" src="assets/img/<%= imgName %>.jpg" width="300px" height="190px">
+                        </a>
+                        <a class="btn" href="/<%= place3 %>Details"><%= place3 %></a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include ('footer.ejs') %>

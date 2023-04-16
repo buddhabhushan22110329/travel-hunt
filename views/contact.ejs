@@ -1,0 +1,80 @@
+<%- include('header.ejs') %>
+
+<div class="middle myAlign pt-5 wow zoomIn">
+  <h1>Get in <span style="color: rgb(255, 217, 0);">Touch</span></h1>
+</div>
+
+
+<section class="myCenter pb-5 mb-5">
+  
+  <div class="container mt-5">
+  
+  
+    <div class="row myCenter">
+      <div class="col-lg-8 col-sm-6" >
+        <div class="card wow zoomIn" style="background-color: rgb(249, 249, 249);">
+          <div class="card-body">
+  
+          
+            <form action="/getintouch" method="POST" class="my">
+  
+              <div class="row ">
+                  <div class="col-lg-6">
+  
+                      <div class="form-group">
+                          <label for="name">Name</label>
+                          <input type="name" class="form-control" name="name">
+                      </div>
+      
+                  </div>
+      
+                  <div class="col-lg-6">
+                      <div class="form-group">
+                          <label for="email">E-mail</label>
+                          <input type="text" class="form-control" name="em" placeholder="abc@xample.com">
+                        </div>
+                  </div>
+  
+                  <div class="col-lg-6 mt-3">
+                      <div class="form-group">
+                          <label for="text">Subject</label>
+                          <input type="text" class="form-control" name="t">
+                        </div>
+                  </div>
+                  <!-- <div class="col-lg-6 mt-3">
+                      <div class="form-group">
+                          <label for="date">Date of travel</label>
+                          <input type="date" class="form-control" name="date">
+                      </div>
+                  </div> -->
+  
+              </div>
+  
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="form-group">
+                          <label for="text">Message</label>
+                          <input type="text" class="form-control" name="de"style="height: 120px;">
+                      </div>
+                  </div>
+              </div>
+  
+              <div class="myCenter mt-5">
+                  <div class="row col-lg-4">
+                      <button type="submit" class="btn btn-dark lgbtn">Send message</button>
+                  </div>
+              </div>
+  
+            </form>
+  
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  </section>
+
+
+
+<%- include('footer.ejs') %>
