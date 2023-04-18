@@ -5,6 +5,7 @@ const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 var alert = require('alert');
+const Razorpay = require("razorpay");
 
 mongoose.set('strictQuery', false);
 
@@ -32,6 +33,7 @@ var adminLogged = false;
 var userLogged = false;
 var bookStatus = false;
 var username = null;
+// var paymentDone = false;
 
 var loggedUser2 = null;   // for google sign in
 
@@ -47,13 +49,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mongoose.connect("mongodb://127.0.0.1:27017/mcdb");
-// mongodb+srv://sirsatbuddhabhushan95:<password>@cluster0.ze0jsoo.mongodb.net/?retryWrites=true&w=majority
-// mongoose.connect("mongodb+srv://sirsatbuddhabhushan95:Bhushan@183@cluster0.ze0jsoo.mongodb.net/tempDB");
-
-// mongo "mongodb+srv://cluster0.ze0jsoo.mongodb.net/myFirstDatabase" --username sirsatbuddhabhushan95
 
 
-mongoose.connect("mongodb+srv://sirsatbuddhabhushan95:123@cluster0.ze0jsoo.mongodb.net/tourismDB", {useNewUrlParser:true});
+mongoose.connect("mongodb+srv://sirsatbuddhabhushan95:123@cluster0.ze0jsoo.mongodb.net/tourismDB", { useNewUrlParser: true });
 
 
 const userSchema = mongoose.Schema({
@@ -128,7 +126,7 @@ app.get("/auth/google/secrets",
         // Successful authentication, redirect secrets
         console.log(username);
         userLogged = true;
-        bookStatus=true;
+        bookStatus = true;
         res.redirect("/home");
     });
 
@@ -138,11 +136,11 @@ app.get("/home", function (req, res) {
 });
 
 app.get("/about", function (req, res) {
-    res.render('about', { username: username, userLogged: userLogged, adminLogged: adminLogged,bookStatus:bookStatus});
+    res.render('about', { username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
 });
 
 app.get("/contact", function (req, res) {
-    res.render('contact', { username: username, userLogged: userLogged, adminLogged: adminLogged,bookStatus:bookStatus});
+    res.render('contact', { username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
 });
 
 app.get("/login", function (req, res) {
@@ -330,6 +328,7 @@ app.get("/logout", function (req, res, next) {
     username = null;
     userLogged = false;
     adminLogged = false;
+    bookStatus = false;
 
     req.logout(function (err) {
         if (err) {
@@ -357,6 +356,7 @@ app.post("/register", function (req, res) {
 app.post("/login", function (req, res) {
 
     loggedUser = req.body.username; // logged user id
+
     const user = new User({
         username: req.body.username,
         password: req.body.password
@@ -366,7 +366,7 @@ app.post("/login", function (req, res) {
         adminLogged = true;
         userLogged = false;
         username = "admin";
-        res.redirect("/home");
+        res.redirect("/allBookings");
         return;
     }
 
@@ -390,6 +390,7 @@ app.post("/login", function (req, res) {
                 userLogged = true;
                 username = req.body.username;
                 bookStatus = true;
+                userID = req.body.id;
                 res.redirect("/home");
 
             })
@@ -409,6 +410,8 @@ app.post("/getDetails", function (req, res) {
     adults = req.body.adults;
     date = req.body.date;
     var string = date;
+
+    // console.log("Save hogaya");
 
     // make the string in format DD-MM-YY
 
@@ -436,6 +439,7 @@ app.post("/getDetails", function (req, res) {
     date = ans;
     console.log(date);
 
+
     User.findById(req.user.id, function (err, foundUser) {
         if (err) {
             console.log(err);
@@ -444,21 +448,23 @@ app.post("/getDetails", function (req, res) {
                 bookID += 1;
                 foundUser.bookings.packages.push({ Name, destination, date, adults, bookID });
 
-                foundUser.save(function () {
-                    alert("Package Booked Successfully !!!");
-                    res.redirect("/home");
+                foundUser.save(function () {  
+                    adminLogged = false;
+                    userLogged = true;
                 });
             }
         }
     });
 });
 
+
 app.get("/myBookings", function (req, res) {
+    // console.log(userID);
+    // console.log(req.user.id);
 
     User.findById(req.user.id, function (err, foundUser) {
         if (err) {
             console.log(err);
-            console.log("MC");
         } else {
             if (foundUser) {
                 var myPackages = foundUser.bookings.packages;
@@ -471,6 +477,126 @@ app.get("/myBookings", function (req, res) {
         }
     });
 });
+
+
+app.post("/delete", function (req, res) {
+    var index = req.body.deleteBtn;
+    console.log(index);
+
+    console.log("before userID");
+
+    console.log(userID);
+
+    var targetID = "";
+    if (adminLogged) targetID = userID;
+    else targetID = req.user.id;
+
+    // delete object at index = index... (in package array)
+
+    User.findById(targetID, function (err, foundUser) {
+        if (err) {
+            console.log(err);
+        } else {
+            if (foundUser) {
+                var myPackages = foundUser.bookings.packages;
+
+                // console.log(myPackages[index]);
+
+                // delete myPackages[index];
+                var newPackage = [];
+
+                for (var i = 0; i < myPackages.length; i++) {
+                    if (i == index) continue;
+                    newPackage[i] = myPackages[i];
+                }
+
+                foundUser.bookings.packages = newPackage;
+
+                foundUser.save(function () {
+                    alert("Package deleted successfully !!!");
+                    if (adminLogged) res.redirect("/allBookings");
+                    else res.redirect("/myBookings");
+                });
+            }
+        }
+    });
+
+    // console.log(index);
+});
+
+var allUsers = [];
+
+
+app.get("/allBookings", function (req, res) {
+    // find all users
+    adminLogged = true;
+
+    User.find(function (err, foundUsers) {
+        if (err) {
+            console.log(err);
+        } else {
+            if (foundUsers) {
+                allUsers = foundUsers;
+
+                res.render('allBookings', { adminLogged: adminLogged, userLogged: userLogged, username: username, bookStatus: bookStatus, foundUsers: foundUsers });
+            }
+        }
+    });
+});
+
+var userID = "";
+
+app.post("/showBookings", function (req, res) {
+    adminLogged = true;
+    userLogged = false;
+
+    userID = req.body.showBtn;
+    console.log(userID);
+
+    User.findById(userID, function (err, foundUser) {
+        if (err) {
+            console.log(err);
+        } else {
+            if (foundUser) {
+                var myPackages = foundUser.bookings.packages;
+
+                res.render('myBookings', { adminLogged: adminLogged, userLogged: userLogged, username: username, packages: myPackages, bookStatus: bookStatus, foundUser: foundUser });
+            }
+            else {
+                res.redirect("/login");
+            }
+        }
+    });
+})
+
+
+
+// Razorpay Payment Gateway Integration - Start
+
+var razorpay = new Razorpay({
+    key_id: 'rzp_test_j2WOdHSdTjraeX',
+    key_secret: 'WwomuKJJiCgRYlkmyicsArLp',
+});
+
+app.post("/order", function (req, res) {
+    var options = {
+        amount: 25000 * 100,
+        currency: "INR",
+    };
+
+    razorpay.orders.create(options, function (err, order) {
+        // console.log(order);
+        res.json(order);
+    });
+});
+
+app.post("/success", function (req, res) {
+    // paymentDone = true;
+    alert("Package Booked Successfully !!!");
+    res.redirect("/myBookings");
+})
+
+// Razorpay Payment Gateway Integration - Ends
 
 app.listen(3000, function () {
     console.log("server has been started on port 3000");

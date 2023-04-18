@@ -1,77 +1,133 @@
 <%- include('header') %>
 
-<div class="middle myAlign pt-5 wow zoomIn">
-  <h1>Enquiry for DELIGHTS OF <span style="color: rgb(255, 217, 0); text-transform: uppercase;"> <%= destination %> </span> </h1>
-</div>
+  <div class="middle myAlign pt-5 wow zoomIn">
+    <h1>Enquiry for DELIGHTS OF <span style="color: rgb(255, 217, 0); text-transform: uppercase;">
+        <%= destination %>
+      </span> </h1>
+  </div>
 
-<section class="myCenter pb-5 mb-5">
+  <section class="myCenter pb-5 mb-5">
+
+    <div class="container mt-5">
+
+
+      <div class="row myCenter">
+        <div class="col-lg-8 col-sm-6">
+          <div class="card wow zoomIn" style="background-color: rgb(249, 249, 249);">
+            <div class="card-body">
+
+
+              <form action="/getDetails" method="POST" class="my">
+
+                <div class="row ">
+                  <div class="col-lg-6">
+
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input required type="name" class="form-control" name="name" placeholder="e.g bhushan">
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="text">Mobile No.</label>
+                      <input required type="text" class="form-control" name="number" placeholder="(+91) ">
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6 mt-3">
+                    <div class="form-group">
+                      <label for="number">No. of adults</label>
+                      <input required type="number" class="form-control" name="adults">
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mt-3">
+                    <div class="form-group">
+                      <label for="date">Date of travel</label>
+                      <input required type="date" class="form-control" name="date">
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label for="text">Details</label>
+                      <input type="text" class="form-control" name="de"
+                        placeholder="Give us more details to assist you better" style="height: 120px;">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="myCenter">
+                  <div class=" myAlign mt-1">
+                  
+                    <div class="row myCenter mb-3">
+                      <div class="co">
+                        <button type="submit" class="btn btn-dark lgbtn">Save details</button>
+                      </div>
+                    </div>
+                    
   
-<div class="container mt-5">
-
-
-  <div class="row myCenter">
-    <div class="col-lg-8 col-sm-6" >
-      <div class="card wow zoomIn" style="background-color: rgb(249, 249, 249);">
-        <div class="card-body">
-
-        
-          <form action="/getDetails" method="POST" class="my">
-
-            <div class="row ">
-                <div class="col-lg-6">
-
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input required type="name" class="form-control" name="name" placeholder="e.g bhushan">
-                    </div>
-    
-                </div>
-    
-                <div class="col-lg-6">
-                    <div class="form-group">
-                        <label for="text">Mobile No.</label>
-                        <input required type="text" class="form-control" name="number" placeholder="(+91) ">
+                    <div class="row">
+                      <div class="co">
+                        <button id="rzp-button1" class="btn btn-dark lgbtn">Proceed to Payment</button>
                       </div>
-                </div>
-
-                <div class="col-lg-6 mt-3">
-                    <div class="form-group">
-                        <label for="number">No. of adults</label>
-                        <input required type="number" class="form-control" name="adults">
-                      </div>
-                </div>
-                <div class="col-lg-6 mt-3">
-                    <div class="form-group">
-                        <label for="date">Date of travel</label>
-                        <input required type="date" class="form-control" name="date">
                     </div>
+  
+                  </div>
                 </div>
 
+              </form>
+
             </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="form-group">
-                        <label for="text">Details</label>
-                        <input type="text" class="form-control" name="de" placeholder="Give us more details to assist you better" style="height: 120px;">
-                    </div>
-                </div>
-            </div>
-
-            <div class="myCenter mt-5">
-                <div class="row col-lg-3">
-                    <button type="submit" class="btn btn-dark lgbtn">Book</button>
-                </div>
-            </div>
-
-          </form>
-
+          </div>
         </div>
+
       </div>
     </div>
+  </section>
 
-  </div>
-</div>
-</section>
+  <script>
 
-<%- include('footer') %>
+    axios.post("/order").then((info) => {
+      // console.log(info);
+
+      var options = {
+        "key": "rzp_test_j2WOdHSdTjraeX", // Enter the Key ID generated from the Dashboard
+        "amount": "50000",
+        "currency": "INR",
+        "name": "Travel Hunts",
+        "description": "Test Transaction",
+        "image": "https://img.freepik.com/premium-vector/detailed-travel-logo_23-2148616612.jpg",
+        "order_id": info.data.id,
+        // "paymentDone": true, 
+        "callback_url": "/success",
+
+        // "prefill": {
+        //   "name": "Gaurav Kumar",
+        //   "email": "gaurav.kumar@example.com",
+        //   "contact": "9000090000"
+        // },
+        // "notes": {
+        //   "address": "Razorpay Corporate Office"
+        // },
+        "theme": {
+          "color": "#3399cc"
+        }
+      };
+
+      var rzp1 = new Razorpay(options);
+      document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+      }
+
+    })
+
+
+  </script>
+
+  <%- include('footer') %>

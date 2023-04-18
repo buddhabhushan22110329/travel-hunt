@@ -3,7 +3,11 @@
     <section class="mt-5 pb-5" style="margin-bottom: 30%;">
 
         <div class="middle myAlign wow zoomIn pt-4">
-            <h1>My <span style="color: rgb(255, 217, 0);">Bookings</span></h1>
+            <% if(userLogged){ %>
+                <h1>My <span style="color: rgb(255, 217, 0);">Bookings</span></h1>
+            <% }else{ %>
+                <h1>Packages Booked By <span style="color: rgb(255, 217, 0);"> <%= foundUser.username %> </span> </h1>
+            <% } %>
       </div>
 
         <div class="container col-lg-8 mt-5  box-class wow fadeInUp">
@@ -13,20 +17,25 @@
 
                     <thead>
                         <tr>
+                            <!-- <th scope="col">Sr. No</th> -->
                             <th scope="col">Name</th>
                             <th scope="col">Destination</th>
                             <th scope="col">Date of journey</th>
                             <th scope="col">No. of aduts</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
     
                     <tbody>
     
                         <% for(var i=0; i<packages.length; i++){ %>
+
+                            
     
                             <tr>
+                                
                                 <td>
-                                    <%= packages[i].Name %>
+                                    <%= packages[i].Name %>                                    
                                 </td>
                                 <td>
                                     <%= packages[i].destination %>
@@ -36,6 +45,12 @@
                                 </td>
                                 <td>
                                     <%= packages[i].adults %>
+                                </td>
+
+                                <td>
+                                    <form action="/delete" method="post">
+                                        <button type="submit" name="deleteBtn" class="btn lgbtn" value="<%=[i]%>">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
     

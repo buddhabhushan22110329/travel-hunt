@@ -27,12 +27,20 @@
     <link rel="stylesheet" href="assets\vendor\owl-carousel\css\owl.carousel.css">
 
 
+    <!-- Include Razorpay SDK -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"
+        integrity="sha512-nnNHpffPSgINrsR8ZAIgFUIMexORL5tPwsfktOTxVYSv+AUAILuFYWES8IHl+hhIhpFGlKvWFiz9ZEusrPcSBQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
 </head>
 
 <body>
 
     <!-- navbar -->
-    <header >
+    <header>
         <nav class="navbar navbar-expand-lg" style="background-color: #242c24;">
             <a class="navbar-brand" href="#">TempName</a>
 
@@ -49,35 +57,45 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/packages">Packages</a>
                     </li>
-               
-                    <% if(bookStatus){ %>
+
+                    <% if(bookStatus && userLogged){ %>
                         <li class="nav-item">
                             <a class="nav-link" href="/myBookings">My Bookings</a>
                         </li>
-                    <% } %>
+                        <% } %>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about">About Us</a>
-                    </li>
-                    <li class="nav-item mr-lg-5">
-                        <a class="nav-link" href="/contact">Contact Us</a>
-                    </li>
 
-                    <%if((adminLogged==false && userLogged==false) || username==null){ %>
-                        <li class="nav-item">
-                            <a class="btn mybtn pr-lg-0" href="/login">Login &nbsp;|</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn mybtn pl-lg-0 ml-lg-2" href="/register">Sign Up</a>
-                        </li>
-                    <%}else{ %>
-                        <li class="nav-item">
-                            <a class="btn mybtn pr-lg-0" href="#"><%=username%>&nbsp;|</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn mybtn pl-lg-0 ml-lg-2" href="/logout">Sign Out</a>
-                        </li>
-                    <%} %>
+                            <% if(adminLogged){ %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/allBookings">All Bookings</a>
+                                </li>
+                                <% } %>
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/about">About Us</a>
+                                    </li>
+                                    <li class="nav-item mr-lg-5">
+                                        <a class="nav-link" href="/contact">Contact Us</a>
+                                    </li>
+
+                                    <%if((adminLogged==false && userLogged==false) || username==null){ %>
+                                        <li class="nav-item">
+                                            <a class="btn mybtn pr-lg-0" href="/login">Login &nbsp;|</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="btn mybtn pl-lg-0 ml-lg-2" href="/register">Sign Up</a>
+                                        </li>
+                                        <%}else{ %>
+                                            <li class="nav-item">
+                                                <a class="btn mybtn pr-lg-0" href="#">
+                                                    <%=username%>&nbsp;|
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="btn mybtn pl-lg-0 ml-lg-2" href="/logout">Sign Out</a>
+                                            </li>
+                                            <%} %>
 
                 </ul>
             </div>
