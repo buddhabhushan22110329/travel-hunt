@@ -4,7 +4,7 @@
     <h1>Enquiry for DELIGHTS OF <span style="color: rgb(255, 217, 0); text-transform: uppercase;">
         <%= destination %>
       </span> </h1>
-  </div>
+  </div>                                  
 
   <section class="myCenter pb-5 mb-5">
 
@@ -97,25 +97,25 @@
 
       var options = {
         "key": "rzp_test_j2WOdHSdTjraeX", // Enter the Key ID generated from the Dashboard
-        "amount": "50000",
+        "amount": "500",
         "currency": "INR",
         "name": "Travel Hunts",
         "description": "Test Transaction",
         "image": "https://img.freepik.com/premium-vector/detailed-travel-logo_23-2148616612.jpg",
         "order_id": info.data.id,
-        // "paymentDone": true, 
-        "callback_url": "/success",
+        "callback_url": "/success",   // post method -> like we do in case of action in forms
 
-        // "prefill": {
-        //   "name": "Gaurav Kumar",
-        //   "email": "gaurav.kumar@example.com",
-        //   "contact": "9000090000"
-        // },
-        // "notes": {
-        //   "address": "Razorpay Corporate Office"
-        // },
+        "prefill": {
+          "name": "Rohit Sharma",
+          "email": "Rohit.Sharma@example.com",
+          "contact": "9000090000"
+        },
+        "notes": {
+          "address": "Razorpay Corporate Office"
+        },
         "theme": {
-          "color": "#3399cc"
+          "color": "#012652"
+          // "color": "#3399cc"
         }
       };
 

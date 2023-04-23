@@ -1,0 +1,59 @@
+<%- include('header') %>
+
+<div class="middle myAlign pt-5 wow zoomIn">
+  <h1>Enter <span style="color: rgb(255, 217, 0);">OTP</span></h1>
+</div>
+
+<div class="middle myAlign pt-5 wow zoomIn">
+  <h3>Check your email for OTP</h3>
+  <!-- <h3>OTP sent successfully at</h3>
+  <h5> <%= email %> </h5> -->
+</div>
+
+<section class="myCenter pb-5 mb-5">
+  
+<div class="container mt-5">
+
+  <div class="row myCenter">
+    <div class="col-lg-4">
+      <div class="card wow zoomIn">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/sendOTP" method="POST">
+            <div class="form-group">
+              <label for="text">OTP</label>
+              <input required type="text" class="form-control" name="otp" placeholder="Enter OTP">
+            </div>
+
+            <div class="loginBtnClass myAlign mt-5">
+              <button type="submit" class="btn btn-dark lgbtn">Submit</button>
+            </div>
+          </form>
+
+          <div class="memberClass myAlign mt-4">
+            <p>Already a member? <a href="/login">Login</a></p>
+          </div>
+
+          <div class="memberClass myAlign mt-3">
+            <p>or sign Up with:</p>
+          </div> 
+
+          <div class="memberClass myAlign mt-3 myCenter">
+      
+            <li><a class="fa-brands fa-facebook fa-xl"style="color: #337eff;"></a></li>
+            <li><a class="fa-brands fa-google fa-xl" style="color: #337eff;" href="/auth/google"></a></li>
+            <li><a class="fa-brands fa-twitter fa-xl" style="color: #337eff;"></a></li>
+            <li><a class="fa-brands fa-square-instagram fa-xl" style="color: #337eff;"></a></li>
+  
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<%- include('footer') %>

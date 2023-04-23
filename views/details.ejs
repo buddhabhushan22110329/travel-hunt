@@ -50,7 +50,7 @@
             </div>
 
             <hr style="border: 1px solid rgb(165, 165, 165);">
-            <h5 class="myAlign">Featured</h5>
+            <h5 class="myAlign">Facilities</h5>
             <div class="row myAlign pt-3">
               <div class="col-lg-4">
                 <i class="fa-solid fa-hotel fa-2x"></i>
@@ -69,6 +69,16 @@
                 <p><span class="txt-class">Sightseeing</span></p>
               </div>
 
+            </div>
+
+            <div class="myCenter">
+              <div class="myAlign">
+                <h5>Rating</h5>
+                <% for(var i=0; i<rating; i++){ %>
+                  <i class="fa-solid fa-star" style="color: rgb(255, 217, 0);"></i>
+                <% } %>
+  
+              </div>
             </div>
 
             <form action="/book" method="post">
@@ -124,7 +134,7 @@
                   <span>5D/6N</span>
                 </div>
                 <div class="col-lg-6">
-                  <h5>₹ 38,990</h5>
+                  <h5>₹ <%= price %></h5>
                   <p style="color: #0E8388;">Available seats:8</p>
                 </div>
               </div>

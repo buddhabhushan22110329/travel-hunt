@@ -1,57 +1,83 @@
 <%- include('header') %>
 
-<div class="middle myAlign pt-5 wow zoomIn">
-  <h1>Sign Up</h1>
-</div>
+  <div class="middle myAlign pt-5 wow zoomIn">
+    <h1>Sign Up</h1>
+  </div>
 
-<section class="myCenter pb-5 mb-5">
+  <section class=" pb-5 mb-5">
+
+    <div class="container mt-5">
+
+      <div class="row myCenter">
+        <div class="col-lg-6">
+          <div class="card wow zoomIn">
+            <div class="card-body">
+
+              <!-- Makes POST request to /login route -->
+              <form action="/register" method="POST">
+                
+                <div class="row">
+
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input required type="email" class="form-control" name="email">
+                    </div>
+                  </div>
+
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="text">Username</label>
+                      <input required type="text" class="form-control" name="username">
+                    </div>
+                  </div>
   
-<div class="container mt-5">
+                </div>
 
+                <div class="row">
 
-  <div class="row myCenter">
-    <div class="col-lg-4">
-      <div class="card wow zoomIn">
-        <div class="card-body">
+                  <div class="col-lg-6">
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input required type="password" class="form-control" name="password">
+                    </div>
+                  </div>
 
-          <!-- Makes POST request to /login route -->
-          <form action="/register" method="POST">
-            <div class="form-group">
-              <label for="text">Username</label>
-              <input required type="text" class="form-control" name="username" placeholder="">
+                </div>
+
+                <div class="row myCenter">
+                  <div class="col-lg-6">
+                    <div class="loginBtnClass myAlign mt-5">
+                      <button type="submit" class="btn btn-dark lgbtn">Sign Up</button>
+                    </div>
+                  </div>
+                </div>
+                
+              </form>
+
+              <div class="memberClass myAlign mt-4">
+                <p>Already a member? <a href="/login">Login</a></p>
+              </div>
+
+              <div class="memberClass myAlign mt-3">
+                <p>or sign Up with:</p>
+              </div>
+
+              <div class="memberClass myAlign mt-3 myCenter">
+
+                <li><a class="fa-brands fa-facebook fa-xl" style="color: #337eff;"></a></li>
+                <li><a class="fa-brands fa-google fa-xl" style="color: #337eff;" href="/auth/google"></a></li>
+                <li><a class="fa-brands fa-twitter fa-xl" style="color: #337eff;"></a></li>
+                <li><a class="fa-brands fa-square-instagram fa-xl" style="color: #337eff;"></a></li>
+
+              </div>
+
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input required type="password" class="form-control" name="password">
-            </div>
-            <div class="loginBtnClass myAlign mt-5">
-              <button type="submit" class="btn btn-dark lgbtn">Sign Up</button>
-            </div>
-          </form>
-
-          <div class="memberClass myAlign mt-4">
-            <p>Already a member? <a href="/login">Login</a></p>
           </div>
-
-          <div class="memberClass myAlign mt-3">
-            <p>or sign Up with:</p>
-          </div>
-
-          <div class="memberClass myAlign mt-3 myCenter">
-      
-            <li><a class="fa-brands fa-facebook fa-xl"style="color: #337eff;"></a></li>
-            <li><a class="fa-brands fa-google fa-xl" style="color: #337eff;" href="/auth/google"></a></li>
-            <li><a class="fa-brands fa-twitter fa-xl" style="color: #337eff;"></a></li>
-            <li><a class="fa-brands fa-square-instagram fa-xl" style="color: #337eff;"></a></li>
-  
         </div>
 
-        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</div>
-</section>
-
-<%- include('footer') %>
+  <%- include('footer') %>

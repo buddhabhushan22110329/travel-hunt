@@ -20,6 +20,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const { test } = require("media-typer");
 const { boolean } = require("webidl-conversions");
+const { random } = require("lodash");
 
 const app = express();
 
@@ -50,21 +51,16 @@ app.use(passport.session());
 
 // mongoose.connect("mongodb://127.0.0.1:27017/mcdb");
 
-
 mongoose.connect("mongodb+srv://sirsatbuddhabhushan95:123@cluster0.ze0jsoo.mongodb.net/tourismDB", { useNewUrlParser: true });
 
-
 const userSchema = mongoose.Schema({
+    email: String,
     username: String,
     password: String,
     googleId: String,
 
-    bookings: {//destination: String,
-        //   destination: [],
-        packages: [{ Name: String, destination: String, date: String, adults: String, bookID: Number }],
-        //   Name: String,
-        //   date: Date,
-        //   adults: String
+    bookings: {
+        packages: [{ Name: String, destination: String, date: String, adults: String, mobile: String }],
     }
 });
 
@@ -209,86 +205,123 @@ app.get("/premiumPackages", function (req, res) {
 
 // details section
 var destination = "";
+var price = "";
 
 app.get("/HampiDetails", function (req, res) {
     destination = "Hampi";
-    res.render('details', { destination: "Hampi", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "6,550";
+
+    res.render('details', { destination: "Hampi", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 3 , price: price});
 });
 
 app.get("/AyodhyaDetails", function (req, res) {
     destination = "Ayodhya";
-    res.render('details', { destination: "Ayodhya", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "7,800";
+
+    res.render('details', { destination: "Ayodhya", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4 , price: price});
 });
 
 app.get("/VaranasiDetails", function (req, res) {
     destination = "Varanasi";
-    res.render('details', { destination: "Varanasi", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "4,000";
+
+    res.render('details', { destination: "Varanasi", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4 , price: price});
 });
 
 app.get("/PuneDetails", function (req, res) {
     destination = "Pune";
-    res.render('details', { destination: "Pune", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "8,750";
+
+    res.render('details', { destination: "Pune", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 3 , price: price});
 });
 
 app.get("/MumbaiDetails", function (req, res) {
     destination = "Mumbai";
-    res.render('details', { destination: "Mumbai", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "12,750";
+
+    res.render('details', { destination: "Mumbai", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4 , price: price});
 });
 
 app.get("/AurangabadDetails", function (req, res) {
     destination = "Aurangabad";
-    res.render('details', { destination: "Aurangabad", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "6,400";
+
+    res.render('details', { destination: "Aurangabad", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4 , price: price});
 });
 
 app.get("/KedarnathDetails", function (req, res) {
     destination = "Kedarnath";
-    res.render('details', { destination: "Kedarnath", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "9,900";
+
+    res.render('details', { destination: "Kedarnath", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 3 , price: price});
 });
 
 app.get("/HaridwarDetails", function (req, res) {
     destination = "Haridwar";
-    res.render('details', { destination: "Haridwar", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "6,450";
+
+    res.render('details', { destination: "Haridwar", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 3 , price: price});
 });
 
 app.get("/RishikeshDetails", function (req, res) {
     destination = "Rishikesh";
-    res.render('details', { destination: "Rishikesh", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "7,400";
+
+    res.render('details', { destination: "Rishikesh", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4 , price: price});
 });
 app.get("/OotyDetails", function (req, res) {
     destination = "Ooty";
-    res.render('details', { destination: "Ooty", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "26,750";
+
+    res.render('details', { destination: "Ooty", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4 , price: price});
 });
 app.get("/KeralaDetails", function (req, res) {
     destination = "Kerala";
-    res.render('details', { destination: "Kerala", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "9,550";
+
+    res.render('details', { destination: "Kerala", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 3 , price: price});
 });
 app.get("/GoaDetails", function (req, res) {
     destination = "Goa";
-    res.render('details', { destination: "Goa", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "15,350";
+
+    res.render('details', { destination: "Goa", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4 , price: price});
 });
 app.get("/SundarbansDetails", function (req, res) {
     destination = "Sundarbans";
-    res.render('details', { destination: "Sundarbans", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "21,700";
+
+    res.render('details', { destination: "Sundarbans", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 3 , price: price});
 });
 app.get("/AustraliaDetails", function (req, res) {
     destination = "Australia";
-    res.render('details', { destination: "Australia", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "38,950";
+
+    res.render('details', { destination: "Australia", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 5 , price: price});
 });
 app.get("/KarnatakDetails", function (req, res) {
-    destination = "Karnatak";
-    res.render('details', { destination: "Karnatak", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    destination = "Karnataka";
+    price = "25,500";
+
+    res.render('details', { destination: "Karnataka", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4, price: price});
 });
 app.get("/AfricaDetails", function (req, res) {
     destination = "Africa";
-    res.render('details', { destination: "Africa", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "31,100";
+
+    res.render('details', { destination: "Africa", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 4, price: price });
 });
 app.get("/MaldivesDetails", function (req, res) {
     destination = "Maldives";
-    res.render('details', { destination: "Maldives", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "34,000";
+
+    res.render('details', { destination: "Maldives", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 5, price: price});
 });
 app.get("/BangkokDetails", function (req, res) {
     destination = "Bangkok";
-    res.render('details', { destination: "Bangkok", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus });
+    price = "30,200";
+
+    res.render('details', { destination: "Bangkok", username: username, userLogged: userLogged, adminLogged: adminLogged, bookStatus: bookStatus, rating: 3, price: price});
 });
 
 
@@ -307,7 +340,6 @@ app.get("/loginUser", function (req, res) {
     userLogged = true;
     res.redirect('login');
 });
-
 
 // get book request
 app.post("/book", function (req, res) {
@@ -338,20 +370,96 @@ app.get("/logout", function (req, res, next) {
     });
 });
 
+var map2 = new Map();
+
+var requiredOTP = Math.random() * 1000000;
+requiredOTP = Math.floor(requiredOTP);
+
+app.post("/sendOTP", function (req, res) {
+    var enteredOTP = req.body.otp;
+
+    if (enteredOTP == requiredOTP) {
+
+        // cookies login code STEP-5
+        // saving user in our database
+
+        User.register({ username: username, email: email }, pass, function (err, user) {
+            if (err) {
+                console.log(err);
+                res.send("A user with the given email/ username is already registered");
+            } else {
+                passport.authenticate("local")(req, res, function () {
+                    res.redirect("/login");
+                })
+            }
+        });
+
+        userLogged = true; adminLogged = false; bookStatus = true;
+        res.redirect("/login");
+    }
+});
+
 app.post("/register", function (req, res) {
 
-    //cookies login code STEP-5
-    User.register({ username: req.body.username }, req.body.password, function (err, user) {
+    email = req.body.email;
+    username = req.body.username;
+    pass = req.body.password;
+    var duplicate = false;
+
+    User.find(function (err, foundUsers) {
         if (err) {
             console.log(err);
-            res.send(" A user with the given username is already registered");
         } else {
-            passport.authenticate("local")(req, res, function () {
-                res.redirect("/login");
-            })
+            if (foundUsers) {
+                // console.log(foundUsers);
+
+                for (var i = 0; i < foundUsers.length; i++) {
+                    if (foundUsers[i].email == email || foundUsers[i].username == username) {
+                        duplicate = true;
+                        res.send("A user with the given email / username is already registered");
+                    }
+                }
+
+            }
+            if (!duplicate) {
+
+                // send OTP via email using nodemailer
+                var nodemailer = require('nodemailer');
+
+                var transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: "sirsatbuddhabhushan95@gmail.com",
+                        pass: "ageuwuhsnokyodyy"      // this is a dummy password -> app password (mail)
+                    }
+                });
+
+                var msg = "One Time Password for signUp is: " + requiredOTP;
+
+                var mailOptions = {
+                    from: "sirsatbuddhabhushan95@gmail.com",
+                    to: email,
+                    subject: 'OTP to access TravelHunts',
+                    text: msg,
+                };
+                transporter.sendMail(mailOptions, function (error, info) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                });
+
+                res.render('otp', { email: email, username: null, userLogged: false, adminLogged: false, bookStatus: false });
+
+            }
         }
-    });
+    })
+
+
 });
+
+
 
 app.post("/login", function (req, res) {
 
@@ -402,16 +510,14 @@ app.post("/login", function (req, res) {
 
 
 // when user booked any destination after filling the form
-var bookID = 0;
 
 app.post("/getDetails", function (req, res) {
 
     Name = req.body.name;
     adults = req.body.adults;
     date = req.body.date;
+    mobile = req.body.number;
     var string = date;
-
-    // console.log("Save hogaya");
 
     // make the string in format DD-MM-YY
 
@@ -437,18 +543,16 @@ app.post("/getDetails", function (req, res) {
     ans += year;
 
     date = ans;
-    console.log(date);
-
 
     User.findById(req.user.id, function (err, foundUser) {
         if (err) {
             console.log(err);
         } else {
             if (foundUser) {
-                bookID += 1;
-                foundUser.bookings.packages.push({ Name, destination, date, adults, bookID });
+                
+                foundUser.bookings.packages.push({ Name, destination, date, adults, mobile });
 
-                foundUser.save(function () {  
+                foundUser.save(function () {
                     adminLogged = false;
                     userLogged = true;
                 });
@@ -459,8 +563,8 @@ app.post("/getDetails", function (req, res) {
 
 
 app.get("/myBookings", function (req, res) {
-    // console.log(userID);
-    // console.log(req.user.id);
+
+    console.log(req.user.id);
 
     User.findById(req.user.id, function (err, foundUser) {
         if (err) {
@@ -480,6 +584,7 @@ app.get("/myBookings", function (req, res) {
 
 
 app.post("/delete", function (req, res) {
+    // res.redirect('../home');
     var index = req.body.deleteBtn;
     console.log(index);
 
@@ -569,8 +674,6 @@ app.post("/showBookings", function (req, res) {
     });
 })
 
-
-
 // Razorpay Payment Gateway Integration - Start
 
 var razorpay = new Razorpay({
@@ -578,9 +681,12 @@ var razorpay = new Razorpay({
     key_secret: 'WwomuKJJiCgRYlkmyicsArLp',
 });
 
+
+
 app.post("/order", function (req, res) {
+    
     var options = {
-        amount: 25000 * 100,
+        amount: "24500" * 100,
         currency: "INR",
     };
 
@@ -591,13 +697,41 @@ app.post("/order", function (req, res) {
 });
 
 app.post("/success", function (req, res) {
-    // paymentDone = true;
     alert("Package Booked Successfully !!!");
-    res.redirect("/myBookings");
+
+    res.render('invoice',{ adminLogged: adminLogged, userLogged: userLogged, username: username, bookStatus: bookStatus, Name:Name, destination:destination, adults:adults, date:date, mobile:mobile});
 })
 
 // Razorpay Payment Gateway Integration - Ends
 
+app.post("/backToMyBookings", function(req, res){
+    res.redirect("/myBookings");
+});
+
 app.listen(3000, function () {
     console.log("server has been started on port 3000");
 });
+
+
+
+// Twilio OTP sender - working properly, but we cant send otp to unverified mobile numbers
+
+// app.post("/sendOTP", function (req, res) {
+//     var code = "+91";
+//     var num = req.body.mobileNumber;
+//     num = code + num;
+
+//     console.log(num);
+
+//     const accountSid = "AC4296cd0657aa204b9b0dda4993cb79c5";
+//     const authToken = "db97c408118b0f8959bd29a6cd7df3c6";
+
+//     const client = require("twilio")(accountSid, authToken);
+
+//     client.messages
+//         .create({ body: "OTP verification Implemented Successfully - by bhushan", from: "+16204148049",
+//         to: "+918857000693"})
+//         .then(message => console.log(message.sid));
+
+//     res.send("OTP Sent");
+// });
